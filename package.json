@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
-    "dev:frontend": "next dev --prefix frontend",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm run dev --prefix frontend",
     "dev:backend": "nodemon backend/server.js",
-    "build": "next build --prefix frontend",
-    "start": "next start --prefix frontend",
-    "lint": "next lint --prefix frontend",
+    "build": "npm run build --prefix frontend && npm run build --prefix backend",
+    "build:frontend": "npm run build --prefix frontend",
+    "build:backend": "tsc --project backend/tsconfig.json",
+    "start": "npm run start --prefix frontend",
+    "lint": "npm run lint --prefix frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
